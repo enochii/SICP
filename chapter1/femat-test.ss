@@ -5,8 +5,11 @@
 (define (expmod base exp n)
   (cond ((= exp 0) 1)
         ((even? exp) (remainder
-                      (square (remainder 
-                               (expmod base (/ exp 2) n) n))
+                      (square 
+                       (remainder 
+                               (expmod base (/ exp 2) n)
+                               n)
+                       )
                       n))
         (else (remainder 
                (* base (remainder
