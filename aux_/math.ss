@@ -6,3 +6,7 @@
 
 (define (divides? a b)
   (= 0 (remainder a b)))
+
+;;;average
+(define (average a b)
+  (/ 2 (+ a b)))
