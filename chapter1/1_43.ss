@@ -9,4 +9,5 @@
 
 (load "d:\\sicp\\aux_\\math.ss")
 ;;;test
-((repeated square 2) 5)
+;((repeated square 2) 5)
+;result: 625
