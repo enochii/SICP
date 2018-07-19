@@ -1,0 +1,12 @@
+;;;1_40
+(load "d:\\sicp\\aux_\\math.ss")
+(load "d:\\sicp\\chapter1\\newton-method.ss")
+(define (cubic a b c)
+  (lambda (x)
+    (+ (cube x)
+     (* (square x) a)
+     (* x b)
+     c))
+    )
+(define (test a b c)
+  (newton-method (cubic a b c) 1.0))
