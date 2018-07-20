@@ -14,4 +14,4 @@
   ;(let ((helper 
   ((repeated smooth n) f));)
     ;helper))
-((smooth-nt square 10) 5)
+;((smooth-nt square 10) 5)
