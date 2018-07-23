@@ -35,4 +35,4 @@
 ;;;test
 (define seg (make-segment (make-point 1 6)
                           (make-point 2 4)))
-(display (mid-point seg))
+;(display (mid-point seg))
