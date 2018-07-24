@@ -15,7 +15,12 @@
 ;;;test
 (if (not (= (add zero two) (add zero two)))
     (display "zzzz"))
-(define f
-  (lambda (a)
-    (lambda (b)
-      (+ a b))))
+;(define f
+;  (lambda (a)
+;    (lambda (b)
+;      (+ a b))))
+
+;;;test, i think it's correct
+(((add two one) sqrt) 16)
+(((add one two) sqrt) 16)
+(((add two two) sqrt) 256)
