@@ -25,3 +25,11 @@
   (if (< a b)
       (gcd b a)
       (gcd a b)))
+
+;(load "d:\\sicp\\aux_\\math.ss")
+;(define (exp base p)
+;  (if (= 0 p)
+;      1
+;      (if (even? p)
+;          (squae (exp base (/ p 2)))
+;          (* base (exp base (- p 1))))))
