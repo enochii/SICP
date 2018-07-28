@@ -54,4 +54,4 @@
             ((= xixi 5)
              (make-interval (* x-low y-low) (* x-up y-up)))))))))
 ;;;test
-(display (mul-interval (cons 2 6) (cons -2 4)))
+;(display (mul-interval (cons 2 6) (cons -2 4)))

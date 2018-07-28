@@ -22,4 +22,4 @@
                          (/ 1.0 y-upper)
                          (/ 1.0 y-lower))))))
 ;;;test div
-(display (div-interval (make-interval -4 -2) (make-interval -3 6))) 
+;(display (div-interval (make-interval -4 -2) (make-interval -3 6))) 
