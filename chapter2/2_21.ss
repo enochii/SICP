@@ -1,0 +1,11 @@
+;;;without map
+(load "d:\\sicp\\aux_\\math.ss")
+(define (square-list items)
+  (if (null? items)
+      (list)
+      (cons (square (car items))
+        (square-list (cdr items)))))
+(define (square-list-with-map items)
+  (map (lambda (x) (square x))
+       items))
+;(display (square-list-with-map (list 1 2 3 4)))
