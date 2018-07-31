@@ -7,7 +7,7 @@
 
 ;;;deep-reverse
 (define (deep-reverse y)
-  (cond ((null? y) ())
+  (cond ;((null? y) ());when y is null, y isn't a pair
         ((not (pair? y)) y)
         (else (append (deep-reverse (cdr y)) 
                       (list (deep-reverse (car y)))))))
@@ -16,4 +16,9 @@
 (newline)
 (define y (list (list (list 1 2) (list 3 4)) 5))
 (display (deep-reverse y))
+(define z (list (list 1 2) ()))
+(newline)
+(display (deep-reverse z))
+(newline)
+(display (deep-reverse (list 1 2 3 4)))
 
