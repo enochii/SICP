@@ -13,3 +13,11 @@
     
 ;;;
 ;(display (rever (cons 3 one-through-four)))
+(define (reverse-1 lis)
+  (define (iter items answer)
+    (if (null? items)
+        answer
+        (iter (cdr items)
+              (cons (car items) answer))))
+  (iter lis ()))
+;(display (reverse-1 (list 1 3 5 7 9)))

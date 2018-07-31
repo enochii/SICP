@@ -31,4 +31,6 @@
       ;((null? (cdr l1)) (cons (car l1) l2))      
       (cons (car l1) (app (cdr l1) l2))))
 ;;test
-;(display (app one-through-four one-through-four))
+;(display 
+ (app one-through-four one-through-four)
+ ;)
