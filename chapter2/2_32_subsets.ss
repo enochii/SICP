@@ -15,8 +15,8 @@
       (helper l)
       ))
 ;;;test
-(print-subsets 
- (subsets (list 1 2 3)))
+;(print-subsets 
+ ;(subsets (list 1 2 3)))
 
       
         

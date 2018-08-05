@@ -32,8 +32,8 @@
                    (filter_ odd?
                             (enumerate-tree tree)))))
 (define (enumerate-interval low high)
-  (if (= low high)
-      (list high)
+  (if (> low high)
+      (list)
       (cons low (enumerate-interval (+ 1 low) high))))
 ;(display (enumerate-interval 1 9))
 
