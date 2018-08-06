@@ -41,6 +41,23 @@
                (iter (- n 1))))))
   (iter sides)
       )
+;;
+  (define (low-queens sides)
+  (define (iter n)
+    (if (= n 1)
+      (rows sides 1)
+      (filter valid-position?
+              (flatmap (lambda (x)
+                 (map (lambda (lis)
+                        (cons x lis))
+                      (iter (- n 1))
+                      ))
+                       (map car (rows sides n))
+               ))))
+  (iter sides)
+      )
 ;;test
+;(length (low-queens 7));;92
+;;change the order of flatmap make repeat calculation of (iter (- n 1)
 (length (queens 8));;92
   
