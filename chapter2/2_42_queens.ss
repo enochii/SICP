@@ -46,18 +46,19 @@
   (define (iter n)
     (if (= n 1)
       (rows sides 1)
+      (let ((temp (iter (- n 1))))
       (filter valid-position?
               (flatmap (lambda (x)
                  (map (lambda (lis)
                         (cons x lis))
-                      (iter (- n 1))
+                      temp;(iter (- n 1))
                       ))
                        (map car (rows sides n))
-               ))))
-  (iter sides)
+               )))))
+  (iter sides) 
       )
 ;;test
 ;(length (low-queens 7));;92
 ;;change the order of flatmap make repeat calculation of (iter (- n 1)
-(length (queens 8));;92
+(length (low-queens 8));;92
   
