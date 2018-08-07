@@ -1,0 +1,27 @@
+;;2.58a
+;;sum
+(define (make-sum a1 a2)
+  (cond ((=number? a1 0) a2)
+        ((=number? a2 0) a1)
+        ((and (number? a1) (number? a2)) (+ a1 a2))
+        (else (list a1 '+ a2))))
+;;
+(define (sum? s)
+  (and (pair? s) (eq? '+ (cadr s))))
+(define (addend s)
+  (car s))
+(define (augend s)
+  (caddr s))
+;;product
+(define (make-product p1 p2)
+  (cond ((or (=number? p1 0) (=number? p2 0))
+         0)
+        ((=number? p1 1) p2)
+        ((=number? p2 1) p1)
+        (else (list p1 '* p2))))
+(define (product? p)
+  (and (pair? p) (eq? '* (cadr p))))
+(define (multiplier p)
+  (car p))
+(define (multiplicand p)
+  (caddr p))
