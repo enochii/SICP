@@ -28,7 +28,8 @@
 ;(load "d:\\sicp\\chapter2\\deriv-product.ss")
 ;;
 (load "d:\\sicp\\chapter2\\2_58a.ss")
-(display (deriv (make-product 'x (make-product 'x 'y)) 'x))
+;(display (deriv '(((x * y) * 7) + (2 * 6)) 'x))
+;(display (deriv (make-product 'x (make-product 'x 'y)) 'x))
 ;(newline)
 ;(display (deriv '(* x y) 'x))
 ;(display (deriv '(+ x y (+ x 3)) 'x))
