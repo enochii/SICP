@@ -27,10 +27,10 @@
         ((null? s2) s1)
         (else
          (let ((v1 (car s1))
-               (r1 (cdr s1)))
-        (if (element-of-set? v1 s2)
-             (union-set r1 s2)
-             (cons v1 (union-set r1 s2))))
+               (r1 (cdr s1))) 
+           (if (element-of-set? v1 s2)
+               (union-set r1 s2)
+               (cons v1 (union-set r1 s2))))
          )))
 ;;
 (newline)

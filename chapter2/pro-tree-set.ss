@@ -1,0 +1,16 @@
+(define (make-tree entry left right)
+  (lambda (x)
+    (cond ((= x 0) entry)
+          ((= x 1) left)
+          ((= x 2) right)
+          (else error "unknown-index"))))
+;;
+(define (entry tree)
+  (tree 0))
+(define (left-branch tree)
+  (tree 1))
+(define (right-branch tree)
+  (tree 2))
+;;
+(define (nil-leaf? x)
+  (list? x))
