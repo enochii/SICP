@@ -1,5 +1,5 @@
 ;;a)
-(load "d:\\sicp\\chapter2\\list-tree-set.ss")
+;(load "d:\\sicp\\chapter2\\list-tree-set.ss")
 (define (list->tree elements)
   (car (partial-tree elements (length elements))))
 ;;

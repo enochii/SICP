@@ -1,5 +1,5 @@
 ;;2.63
-(load "d:\\sicp\\chapter2\\pro-tree-set.ss")
+;(load "d:\\sicp\\chapter2\\pro-tree-set.ss")
 (define (tree->list-1 tree)
   (if (nil-leaf? tree)
       '()
