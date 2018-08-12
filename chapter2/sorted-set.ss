@@ -30,9 +30,9 @@
            (iter (append prev (list (car rest))) (cdr rest)))))
   (iter '() set))
 ;;
-(display (adjoin-set 4 '(1 2 3 5)))
-(newline)
-(display (adjoin-set 4 '(1 2 3 4 5)))
+;(display (adjoin-set 4 '(1 2 3 5)))
+;(newline)
+;(display (adjoin-set 4 '(1 2 3 4 5)))
 ;;union
 (define (union-set s1 s2)
   (cond ((null? s1) s2)
@@ -43,5 +43,5 @@
                       ((< v1 v2) (cons v1 (union-set (cdr s1) s2)))
                       (else (cons v2 (union-set s1 (cdr s2)))))))))
 ;;
-(newline)
-(display (union-set '(1 3 5) '(1 2 4 8)))
+;(newline)
+;(display (union-set '(1 3 5) '(1 2 4 8)))
