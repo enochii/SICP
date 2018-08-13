@@ -25,4 +25,4 @@
                    (else (error "unknown code" code)))))))
   (decode-1 bits tree))
 ;;test
-(display (decode bits hfm-tree))
+;(display (decode bits hfm-tree))

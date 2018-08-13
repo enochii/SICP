@@ -37,7 +37,7 @@
               (make-leaf 'g 3) (make-leaf 'h 8)))
 ;;
 
-(define (decode tree)
+(define (print-code tree)
   (define (left-and-right output tree)
   (iter (append output (list 0)) (car tree))
   (iter (append output (list 1)) (cadr tree)))
@@ -50,4 +50,4 @@
   (iter '() tree))
   
 ;(display (cadr (hfm elts)))
-(decode (cadr (hfm elts)))
+;(print-code (cadr (hfm elts)))
