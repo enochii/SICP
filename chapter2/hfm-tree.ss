@@ -8,7 +8,11 @@
             (cons x tree)
             (cons e (adjoin-set x (cdr tree)))))))
 (define (combine-leaf x y)
-  (make-leaf (list (symbol-leaf x) (symbol-leaf y))
+  (make-leaf (list ;;(cons 
+                    (symbol-leaf x) ;0)
+                   ;;(cons 
+                    (symbol-leaf y) ;1)
+                    )
              (+ (weight-leaf x) (weight-leaf y))))
 
 ;;
@@ -31,4 +35,19 @@
               (make-leaf 'a 1) (make-leaf 'b 1) (make-leaf 'c 1)
               (make-leaf 'd 1) (make-leaf 'e 1) (make-leaf 'f 1)
               (make-leaf 'g 3) (make-leaf 'h 8)))
-(display (hfm elts))
+;;
+
+(define (decode tree)
+  (define (left-and-right output tree)
+  (iter (append output (list 0)) (car tree))
+  (iter (append output (list 1)) (cadr tree)))
+  (define (iter output tree)
+    (if (symbol? tree)
+        (display (cons tree output))
+        (left-and-right output tree))
+        ;(newline))
+    )
+  (iter '() tree))
+  
+;(display (cadr (hfm elts)))
+(decode (cadr (hfm elts)))
