@@ -9,17 +9,18 @@
     (cond ((symbol? st)
            (cons (eq? sbl st) result))
           (else
-           (let ((left-res (search-iter (append result '(0)) (car st)))
-                 (right-res (search-iter (append result '(1)) (cadr st))))
-             (cond ((car left-res) left-res)
-                   ((car right-res) right-res)
-                   (else (cons #f '())))))))
+           (let ((left-res (search-iter (append result '(0)) (car st))))
+             (if (car left-res) left-res
+                 (let ((right-res (search-iter (append result '(1)) (cadr st))))
+                   (if (car right-res) right-res
+                       (cons #f '()))))))))
+  ;;
   (let ((res (search-iter '() tree)))
     (if (car res)
         (cdr res)
         (error "No such symbol in the given hfm-tree -> " sbl))))
 (load "d:\\sicp\\chapter2\\hfm-decode.ss")
-;(display (encode '(c b a h e f g d) hfm-tree))
+;(display (decode (encode '(c b a h e f g d) hfm-tree) hfm-tree))
 ;(display (encode '(c b i h e f g d) hfm-tree))
 ;;In my eyes, if we replace "append" with "cons" and "reverse",
 ;;it may be faster
