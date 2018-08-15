@@ -1,0 +1,14 @@
+2.77
+对于表达式(magnitude z),函数调用如下
+;;(cz 表示带有complex标签
+(magnitude cz) -> (apply-generic 'magnitude cz)
+--由'magnitude和'complex索引到-->(magnitude z)
+--由'magnitude和'polar/'rectangular索引到->
+polar/rectangular-package内部的magnitude实现
+;;
+这里可以看到对于cz和z，（外部的也即第一二次出现的）的magnitude
+有点重载的味道，前提是你把cz和z看成两种不同的类型。真是amazing，
+虽然calculate-system.ss的一大坨代码都不能run。
+;;
+在这里还想多吹点水，其实message passing和data directed手法都用
+了局部名称从而消除了函数命名冲突。
