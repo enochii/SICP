@@ -78,7 +78,9 @@
   ;;magnitude, angle
   ;;......
   
-  ;;
+  ;;here i dont know why it has a error, the code is the same as book code ->
+  ;;define: not allowed in an expression context in: (define tag (~lambda (x) (attach-tag (quote complex) x)))
+  ;;Environment -> DrScheme, version 4.2.5
   (define (tag x)
     (attach-tag 'complex x))
   (put 'add '(complex complex)
