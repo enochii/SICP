@@ -1,0 +1,20 @@
+(define (split-list position l)
+  (define (iter pre rest count)
+    (if (= 0 count)
+        (cons (reverse pre) rest)
+        (iter (cons (car rest) pre) (cdr rest) (- count 1))))
+  (iter '() l position))
+
+(define (build-list-from-num-val number value)
+  (define (iter count result)
+    (if (= 0 count)
+        result
+        (iter (- count 1) (cons value result))))
+  (iter number '{}))
+
+(define (test-code)
+  (display (split-list 3 '(1 2 3 4 5)))
+(display (cdr (split-list 3 '(1 2 3 4 5))))
+  (display (build-list-from-num-val 3 5))
+  )
+;(test-code)
