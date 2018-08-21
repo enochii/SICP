@@ -73,7 +73,7 @@
       (cons term term-list)));;assume that order of term is bigger than all of term-list
 (define (the-empty-termlist) '())
 (define (first-term term-list) (car term-list))
-(define (rest-term term-list) (car term-list))
+(define (rest-terms term-list) (cdr term-list))
 (define (empty-termlist? term-list) (null? term-list))
 
 (define (make-term order coeff) (list order coeff))
