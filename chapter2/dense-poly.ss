@@ -26,9 +26,27 @@
 
 ;;sub-terms
 (define (sub-terms-dense l1 l2)
-  (add-terms-dense l1 (make-negative-terms-dense l2)))
+  (define (filter-prefix-zero lis)
+    (if (null? lis)
+        lis
+        (if (not (=zero? (car lis)))
+            lis
+            (filter-prefix-zero (cdr lis)))))
+  (let ((result (add-terms-dense l1 
+                                 (make-negative-terms-dense l2))))
+    (filter-prefix-zero result)))
 
 (define (test-code)
   (display (sub-terms-dense '(2 3 4) '(1 2 3 4))) (newline)
   )
-(test-code)
+;(test-code)
+(define (adjoin-term-dense term terms)
+  (append (cons (coeff term) (build-list-from-num-val
+                            (- (order term) (length terms))
+                            0))
+          terms))
+;;
+(define adjoin-term adjoin-term-dense)
+(define first-term first-term-dense)
+(define mul-term-by-terms mul-term-by-terms-dense)
+(define sub-terms sub-terms-dense)

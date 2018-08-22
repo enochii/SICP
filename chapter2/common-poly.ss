@@ -6,6 +6,10 @@
 (define (the-empty-termlist) '())
 ;(define (adjoin-term term terms) (cons term terms))
 (define (rest-terms term-list) (cdr term-list))
+(define (same-variable? x y)
+  (and (symbol? x) (symbol? y) (eq? x y)))
+(define (variable x) (car x))
+(define (term-list x) (cdr x))
 
 ;;may need to define generic procedure
 (define make-negative -);;
