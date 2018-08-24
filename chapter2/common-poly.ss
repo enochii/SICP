@@ -10,6 +10,7 @@
   (and (symbol? x) (symbol? y) (eq? x y)))
 (define (variable x) (car x))
 (define (term-list x) (cdr x))
+(define (make-poly var terms) (cons var terms))
 
 ;;may need to define generic procedure
 (define make-negative -);;
@@ -17,3 +18,7 @@
 (define mul *)
 (define div /)
 (define =zero? (lambda (x) (= 0 x)))
+;;
+;;assumed that exp is a scheme-number or poly
+(define (poly? exp)
+  (pair? exp))
