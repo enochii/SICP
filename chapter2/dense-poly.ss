@@ -10,7 +10,7 @@
    (let ((len1 (length terms1))
          (len2 (length terms2)))
      (cond ((> len1 len2)
-            (let ((result-pair (split-pair (- len1 len2) terms1)))
+            (let ((result-pair (split-list (- len1 len2) terms1)))
               (append (car result-pair)
                       (map add (cdr result-pair) terms2))))
            ((< len1 len2)
@@ -39,7 +39,7 @@
 (define (test-code)
   (display (sub-terms-dense '(2 3 4) '(1 2 3 4))) (newline)
   )
-;(test-code)
+
 (define (adjoin-term-dense term terms)
   (append (cons (coeff term) (build-list-from-num-val
                             (- (order term) (length terms))
@@ -50,3 +50,4 @@
 (define first-term first-term-dense)
 (define mul-term-by-terms mul-term-by-terms-dense)
 (define sub-terms sub-terms-dense)
+;(display (add-terms-dense '(1 2 3) '(2 3 4)))
