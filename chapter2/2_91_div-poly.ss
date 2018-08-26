@@ -29,5 +29,5 @@
   (if (same-variable? (variable p1) (variable p2))
       (cons (variable p1) (div-terms (term-list p1) (term-list p2)))
       (error "different var...")))
-(display (div-poly '(x 1 0 0 0 0 -1) '(x 1 0 -1)))
-(display (div-poly '(x 1 0 0 0 0 -1) '(y 1 0 -1)))
+;(display (div-poly '(x 1 0 0 0 0 -1) '(x 1 0 -1)))
+;(display (div-poly '(x 1 0 0 0 0 -1) '(y 1 0 -1)))

@@ -4,8 +4,10 @@
 
 (load "d:\\sicp\\chapter2\\split-list.ss");;build-list
 (define (mul-term-by-terms-dense term terms)
-  (append (map (lambda (x) (mul x (coeff term))) terms)
-          (build-list-from-num-val (order term) 0)))
+  (if (empty-termlist? terms)
+      (the-empty-termlist)
+      (append (map (lambda (x) (mul x (coeff term))) terms)
+              (build-list-from-num-val (order term) 0))))
 (define (add-terms-dense terms1 terms2);;test code before
    (let ((len1 (length terms1))
          (len2 (length terms2)))
@@ -45,9 +47,23 @@
                             (- (order term) (length terms))
                             0))
           terms))
+(define (mul-terms-dense ts1 ts2)
+  (if (empty-termlist? ts1)
+      (the-empty-termlist)
+      (add-terms-dense (mul-term-by-terms (first-term-dense ts1) ts2)
+                       (mul-terms-dense (rest-terms ts1) ts2))))
 ;;
 (define adjoin-term adjoin-term-dense)
 (define first-term first-term-dense)
 (define mul-term-by-terms mul-term-by-terms-dense)
 (define sub-terms sub-terms-dense)
-;(display (add-terms-dense '(1 2 3) '(2 3 4)))
+(define add-terms add-terms-dense)
+(define mul-terms mul-terms-dense)
+(define make-negative-terms make-negative-terms-dense)
+
+(define (test-code)
+  ;(display (add-terms-dense '(1 2 3) '(2 3 4)))
+  ;(display (mul-term-by-terms '(2 3) '(1 2 3 4)))
+  (display (mul-terms-dense '(1 2 3) '(4 5 0 1)))(newline)
+  'done)
+;(test-code)
