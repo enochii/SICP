@@ -1,0 +1,22 @@
+(define (not-recorded? x records)
+  (define (iter rest-records)
+    (cond ((null? rest-records) #t)
+          ((equal? (car rest-records) x) #f)
+          (else (iter (cdr rest-records)))))
+  (iter records))
+
+(define (count-pairs x)
+  (define records_ '())
+  (define (iter x)
+    ;(display x)
+    ;(display records_)
+    (if (and (pair? x)
+             (not-recorded? x records_))
+        (begin (set! records_ (cons x records_))
+               (+ (iter (car x))
+                  (iter (cdr x))
+                  1))
+        0))
+  (iter x))
+;;but in procedure "not-recorded?" we regard equal value as the same thing,
+;;which i think it's not perfect /-\
