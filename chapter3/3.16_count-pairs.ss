@@ -4,7 +4,7 @@
          (count-pairs (cdr x))
          1)
       0))
-;(load "d:\\sicp\\chapter3\\3.17_count-pair.ss")
+;(load "d:\\sicp\\chapter3\\3.17_count-pairs.ss")
 ;;3
 (count-pairs '(1 2 3))
 ;;
@@ -24,3 +24,8 @@
 
 (memq (list 2 3) (list 1 (list 2 3)))
 ;why the result of above code is #f?
+;;
+;;updated count-pairs in 3.17 also has bugs, cause it regard the equal '(1)
+;;as the same thing
+(define xixi (cons (list 1) (list 1)))
+(count-pairs xixi)

@@ -1,0 +1,37 @@
+(define (mcons x y)
+  (define (dispatch m)
+    (cond ((eq? m 'car) x)
+          ((eq? m 'cdr) y)
+          ((eq? m 'set-car!)
+           (lambda (a)
+             (set! x a)))
+          ((eq? m 'set-cdr!)
+           (lambda (a)
+             (set! y a)))
+          (else (error "no such operation" m))))
+  dispatch)
+;;
+(define (mcar z) (z 'car))
+(define (mcdr z) (z 'cdr))
+(define (mset-car! z a) ((z 'set-car!) a))
+(define (mset-cdr! z a) ((z 'set-cdr!) a))
+;;test
+(define (test-code)
+  (define x (mcons 'foo 'xi))
+;;
+  (display (mcar x))(newline)
+  (display (mcdr x))(newline)
+;;
+  (mset-car! x 'schsb)
+  (display (mcar x))(newline)
+  (display (mcdr x))(newline)
+;;
+  (mset-cdr! x 'schbsb)
+  (display (mcar x))(newline)
+  (display (mcdr x))(newline)
+;;
+  (mcons 'yyy 'hcs)
+  (display (mcar x))(newline)
+  (display (mcdr x))(newline)
+  'done)
+;(test-code)

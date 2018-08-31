@@ -1,0 +1,10 @@
+(load "d:\\sicp\\chapter3\\mutable-cons.ss")
+(define x (mcons 1 2))
+(define z (mcons x x))
+(mset-car! (mcdr z) 17)
+(mcar x)
+;;
+(define x (cons 1 2))
+(define z (cons x x))
+(set-car! (cdr z) 17)
+(car x)
