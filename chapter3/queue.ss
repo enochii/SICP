@@ -1,0 +1,32 @@
+;;data-structure-1 -> queue
+(define (make-queue) (cons '() '()))
+(define (front-ptr q) (car q))
+(define (rear-ptr q) (cdr q))
+(define (print-queue q)
+  (define (iter front-pt)
+    (if (null? front-pt)
+        (newline)
+        (begin (display (car front-pt))
+               (iter (cdr front-pt)))))
+  (iter (front-ptr q)))
+(define (empty-queue? q) (null? (front-ptr q)))
+(define (front-queue q) (car (front-ptr q)))
+(define (insert-queue! q item)
+  (let ((new (cons item '())))
+    (if (empty-queue? q)
+        (begin (set-car! q new)
+               (set-cdr! q new)
+               q)
+        (begin (set-cdr! (rear-ptr q) new)
+               (set-cdr! q new)
+               q))))
+(define (delete-queue! q)
+  (if (empty-queue? q)
+      (error "queue is empty" q)
+      (begin (set-car! q (cdr (front-ptr q)))
+             (if (empty-queue? q);;remember to make rear-ptr null-ptr
+                 (set-cdr! q '()));;when q just has one item
+             q)));;;;;;;;;;;;;;;;;;;if we do it, we can use display
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;to replace print-queue self-defined
+(define print-queue display)
+(load "d:\\sicp\\chapter3\\queue-test-code.ss")
