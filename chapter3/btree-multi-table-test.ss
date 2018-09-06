@@ -1,0 +1,31 @@
+(load "d:\\sicp\\chapter3\\btree-multi-table.ss")
+;;give them value cause binary tree need to be sorted
+(define tj 1)
+(define se 2)
+(define sch 3)
+(define fd -1)
+(define fx 4)
+(define wcc 5)
+;;test
+(define xi (make-leaf))
+(insert! (list tj se sch) 'sb xi)
+(insert! (list tj se) 200 xi)
+(insert! (list tj) 'ilovetj xi)
+(insert! (list se tj) 'reverse xi)
+'first-time!:
+(lookup (list tj se sch) xi)
+(lookup (list tj) xi)
+(lookup (list tj se) xi)
+(lookup (list se tj) xi)
+(insert! (list tj se) 'tjse xi)
+'second-time!:
+(lookup (list tj se sch) xi)
+(lookup (list tj) xi)
+(lookup (list tj se) xi)
+(lookup (list se tj) xi)
+'thrid-time!:
+(insert! (list tj se sch) 'bsbl xi)
+(lookup (list tj se sch) xi)
+(lookup (list tj) xi)
+(lookup (list tj se) xi)
+(lookup (list se tj) xi)
