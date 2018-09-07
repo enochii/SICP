@@ -22,4 +22,4 @@
   (display (lookup 'sch t))(newline)
   (display (lookup 'syq t))(newline)
   'done)
-(test-code)
+;(test-code)
