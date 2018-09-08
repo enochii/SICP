@@ -1,0 +1,6 @@
+;;数字电路的模拟器(3.3.4还是很有意思的，个人还是不喜欢跑不起来的代码，奇妙的是
+;;似乎我觉得写不出来的代码(after-delay,etc...却被实现了，姿势水平还是不够。
+;;再者是wire的dispatch的add-action!分支，其实跟设置handle回掉函数类似，当
+;;set-signal!被调用时便调用被add的action。另外，在ripple-carry-adder以为
+;;要调用多次的propagate却只需一次，就像是多米诺骨牌，一个set-signal!引发了一
+;;连串的set-signal!，propagate递归大法！

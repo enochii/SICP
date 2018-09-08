@@ -14,7 +14,7 @@
         (c2 (make-wire)))
     (half-adder b c-in s c1)
     (half-adder a s sum c2)
-    (or-gate c2 c1 c-out))
+    (or-gate c1 c2 c-out))
   'ok)
 ;;这里的a和b是两个被加数对应位置上的二进制位，c-in是从被加位的右边来的进位位。
 ;;这一电路产生的sum是这里的a和b是两个被加数对应位置上的二进制位,c-in是从被加位

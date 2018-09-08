@@ -18,7 +18,8 @@
 ;;
 ;(define (xixi) (display "xixi")(newline))
 (define (call-each procedures)
-  (map (lambda (proc) (proc)) procedures))
+  (map (lambda (proc) (proc)) procedures)
+  'call-done)
 ;(call-each (list xixi xixi xixi))
 (define (get-signal wire) (wire 'get-signal))
 (define (set-signal! wire new-value) ((wire 'set-signal!) new-value))

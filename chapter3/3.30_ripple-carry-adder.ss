@@ -3,11 +3,11 @@
   (cond ((null? b);;end
          (cons c-in '()))
         ((null? a)
-         (ripple-carry-adder (list (make-ware));;it will initialize with zero signal
+         (ripple-carry-adder (list (make-wire));;it will initialize with zero signal
                              b c-in))
         (else
-         (let ((s (make-ware))
-               (c-out (make-ware)))
+         (let ((s (make-wire))
+               (c-out (make-wire)))
            (full-adder (car a) (car b) c-in s c-out)
            (let ((result (ripple-carry-adder (cdr a) (cdr b) c-out))) 
              (cons (car result) (cons s (cdr result))))
