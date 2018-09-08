@@ -29,4 +29,4 @@
              q)));;;;;;;;;;;;;;;;;;;if we do it, we can use display
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;to replace print-queue self-defined
 (define print-queue display)
-(load "d:\\sicp\\chapter3\\queue-test-code.ss")
+;(load "d:\\sicp\\chapter3\\queue-test-code.ss")

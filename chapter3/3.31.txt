@@ -1,0 +1,3 @@
+;;3.31
+;;take or-gate for example, if we don't do the inital call, the output
+;;will remain the primitive value
