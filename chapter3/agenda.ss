@@ -35,7 +35,7 @@
               (set-cdr! segments
                         (cons (make-new-time-segment time action)
                               (cdr segments)))
-              (add-to-segments! (cdr segments))))))
+              (add-to-segments! rest)))))
   (let ((segments (segments agenda)))
     (if (belongs-before? segments)
         (set-segments!

@@ -1,0 +1,43 @@
+;;3.37
+(load "d:\\sicp\\chapter3\\constraint.ss")
+(define (c+ x y);;both x and y are connectors
+  (let ((s (make-connector)))
+    (adder x y s)
+    s))
+(define (c* x y)
+  (let ((p (make-connector)))
+    (multiplier x y p)
+    p))
+(define (c/ x y)
+  (let ((q (make-connector)))
+    (multiplier q y x)
+    q))
+(define (c- x y)
+  (let ((d (make-connector)))
+    (adder d y x)
+    d))
+(define (cv c-value)
+  (let ((c (make-connector)))
+    (constant c-value c)
+    c))
+(define (celsius-fahrenheit-converter x)
+  (c+ 
+   (cv 32)
+   (c/ (c* (cv 9) x)
+       (cv 5))))
+;;test
+;(define emmm (cv 5))
+(define t (make-connector))
+(probe 't t)
+(define c 
+  (constant 5 t))
+(forget-value! t c)
+;c
+'emmmm
+(define c (make-connector))
+(define f (celsius-fahrenheit-converter c))
+(probe 'c c)
+(probe 'f f)
+(set-value! c 5 'sch)
+(forget-value! c 'sch)
+(set-value! f 41 'sb)

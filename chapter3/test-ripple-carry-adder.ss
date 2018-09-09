@@ -18,13 +18,16 @@
 
 (define a-list (list (make-wire) (make-wire) (make-wire)));;1 0 1
 (define b-list (list (make-wire) (make-wire) (make-wire)));;1 1 0
+(define c-in (make-wire))
+
+(define xi (ripple-carry-adder a-list b-list c-in))
+
 (set-signal! (car a-list) 1)
 (set-signal! (caddr a-list) 1)
 ;(set-signal! (car b-list) 1)
 (set-signal! (cadr b-list) 1)
 (print-wires a-list)
 (print-wires b-list)
-(define c-in (make-wire))
-(define xi (ripple-carry-adder a-list b-list c-in))
+
 (propagate)
 (print-wires xi)
