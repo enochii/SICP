@@ -1,0 +1,3 @@
+;;to avoid deadlock result from acquiring resources shared, we can give id to
+;;resources, and let all the procedures to acquire with a appointed order, it
+;;can reslove some cases of deadlock.

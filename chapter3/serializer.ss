@@ -1,0 +1,25 @@
+(define (make-serializer)
+  (let ((mutex (make-mutex)))
+    (lambda (p);;p -> procedure
+      (define (serializer-p . args)
+        (mutex 'acquire)
+        (let ((val (apply p args)))
+          (mutex 'release)
+          val))
+      serializer-p)))
+;;
+(define (make-mutex)
+  (let ((cell (list #f)))
+    (define (the-mutex m)
+      (cond ((eq? m 'acqiure)
+             (if (test-and-set! cell)
+                 (the-mutex 'acquire)));;
+            ((eq? m 'release)
+             (clear! cell))))
+    the-mutex))
+(define (clear! cell) (set-car! cell false))
+(define (test-and-set! cell)
+  (if (car cell)
+      #t;;required by others
+      (begin (set-car! cell #t)
+             #f)))
