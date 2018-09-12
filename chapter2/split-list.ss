@@ -10,7 +10,7 @@
     (if (= 0 count)
         result
         (iter (- count 1) (cons value result))))
-  (iter number '{}))
+  (iter number '()))
 
 (define (test-code)
   (display (split-list 3 '(1 2 3 4 5)))
