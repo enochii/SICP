@@ -4,9 +4,9 @@
   )
 ;(infinite-play 'xixi)
 
-(define (cons-stream a b)
-  (display "im here")
-  (cons a (delay b)))
+;(define (cons-stream a b)
+  ;(display "im here")
+  ;(cons a (delay b)))
 ;(cons-stream 'a (display "pny"))
 ;;'pny is displayed before 'im here, when we do (cons-stream a b) as a procedure
 ;;call, expression b will be evaluated before application of cons-stream

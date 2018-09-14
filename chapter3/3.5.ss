@@ -1,0 +1,16 @@
+(load "d:\\sicp\\aux_\\random-in-range.ss")
+(load "d:\\sicp\\chapter3\\estimate-pi.ss")
+(load "d:\\sicp\\aux_\\math.ss")
+(define (estimate-integral pred x1 x2 y1 y2 times)
+  (define (experiment)
+    (let ((x (random-in-range x1 x2))
+          (y (random-in-range y1 y2)))
+      (pred x y)))
+  (* (monte-carlo times experiment)
+     (abs (- x1 x2)) (abs (- y1 y2)) 1.0))
+(define area
+  (estimate-integral (lambda (x y) (<= (+ (square (- x 5)) (square (- y 7)))
+                                       9))
+                     2 8 4 10 10000))
+(define pi (/ area 9))
+pi

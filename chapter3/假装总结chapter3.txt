@@ -1,0 +1,3 @@
+ch3 is also completed.cause of the connection of files inside ch3, i need to load again and again, but resulting from my arbitrily dealing with the files structure,it make some extra complexity, which sometimes confused me. and from now, i think i should not omit it.
+as for the content, i think it's a little amazing.such as constraint, concurrency... stream is wonderful, but probably i looked forward to it too much and i see a little lazy-evaluation before, so it can't surprise me a lot. but to tell the truth, i think the power of infinite stream is great.
+my english is really terrible......laugh at me, please.
