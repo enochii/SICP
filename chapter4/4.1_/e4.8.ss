@@ -1,0 +1,50 @@
+;(begin (define a 3) (* a 3))
+(define (fib n)
+  (let fib-iter ((a 1)
+                 (b 0)
+                 (count n))
+    (if (= count 0)
+        b
+        (fib-iter (+ a b) a (- count 1)))))
+;(fib 10)
+;;
+(define (named-let? exp)
+  (and (let? exp) (symbol? (named-let-var exp))))
+(define (named-let-var exp)
+  (cadr exp))
+(define (named-let-parameters exp)
+  (map car (caddr exp)))
+(define (named-let-inits exp)
+  (map cadr (caddr exp)))
+(define (named-let-body exp)
+  (cadddr exp))
+(define (named-let->begin exp)
+  (make-begin (list (list 'define
+                          (cons (named-let-var exp) (named-let-parameters exp))
+                          (named-let-body exp))
+                    (cons (named-let-var exp) (named-let-inits exp)))))
+(define (let->combination-snl exp);;snl---support named-let
+  (if (named-let? exp)
+      ;(begin (display "named-let!")
+      (named-let->begin exp);)
+      (cons (make-lambda (let-variables exp) (let-body exp))
+            (let-values exp))))
+;;
+(load ".\\e4.6.ss")
+(load ".\\4.1.2.ss")
+(define (test-let->combination-snl)
+  (define expr '(let fib-iter ((a 1)
+                               (b 0)
+                               (count n))
+                  (if (= count 0)
+                      b
+                      (fib-iter (+ a b) a (- count 1))))
+    )
+  (let->combination-snl expr))
+(test-let->combination-snl)
+(define (f n);;begin-expression is the output of above test-code, it works normally
+  (begin
+  (define (fib-iter a b count) (if (= count 0) b (fib-iter (+ a b) a (- count 1))))
+  (fib-iter 1 0 n))
+  )
+;(f 10);55

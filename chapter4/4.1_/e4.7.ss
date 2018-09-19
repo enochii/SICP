@@ -1,0 +1,21 @@
+;(let* ((a 1)    (let ((a 1))
+;       (b 2) ->   (let ((b 2))
+;       (c 3))       (let ((c 3))
+;  <body>)             <body>)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define (add-bracket pair) (list pair))
+(define (let*-iter vars body)
+  (cond ((null? vars) body)
+        (else 
+         (make-let (add-bracket (car vars))
+                   (let*-iter (cdr vars) body)))))
+(define (let*->nested-lets exp)
+  (let*-iter (cadr exp) (caddr exp)))
+;;
+(load "d:\\sicp\\chapter4\\4.1\\e4.6.ss")
+(load "d:\\sicp\\chapter4\\4.1\\4.1.2.ss")
+(define expr '(let* ((a 1)
+                     (b a)
+                     (c b))
+                (* a b c)))
+(let*->nested-lets expr)
