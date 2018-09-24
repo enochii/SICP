@@ -28,7 +28,21 @@
   
   y
   )
-
+(define (solve f y0 dt)
+  (display "v1")
+  (let ((y '*unassigned*)
+        (dy '*unassigned*))
+    (set! y (integral (delay dy) y0 dt))
+    (set! dy (stream-map f y))
+    y))
+(define (solve f y0 dt)
+  (display "v2")
+  (let ((y '*unassigned*)
+        (dy '*unassigned*))
+    (let ((a (integral (delay dy) y0 dt))
+          (b (stream-map f y)))
+      (set! y a)
+      (set! dy b))))
 ;(stream-ref (solve (lambda (x) x) 1 0.001) 1000)
 
 (define (integral delayed-integrand initial-value dt)
@@ -39,4 +53,5 @@
                   int)))
   (display "see here!")
   int)
-;(stream-ref (solve (lambda (x) x) 1 0.001) 1000)
+;;v1 and v2 are for exerxise4.18
+(stream-ref (solve (lambda (x) x) 1 0.001) 1000)

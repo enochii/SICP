@@ -1,9 +1,10 @@
 ;(display (list'primitive))
 (load "d:\\sicp\\aux_\\helper.ss")
-(load "d:\\sicp\\chapter4\\4.1\\4.1.1.ss")
-(load "d:\\sicp\\chapter4\\4.1\\4.1.2.ss")
-(load "d:\\sicp\\chapter4\\4.1\\4.1.3.ss")
-(load "d:\\sicp\\chapter4\\4.1\\env-representation.ss")
+;(load "d:\\sicp\\chapter4\\4.1_\\4.1.1.ss")
+(load "d:\\sicp\\chapter4\\4.1_\\4.1.7.ss")
+(load "d:\\sicp\\chapter4\\4.1_\\4.1.2.ss")
+(load "d:\\sicp\\chapter4\\4.1_\\4.1.3.ss")
+(load "d:\\sicp\\chapter4\\4.1_\\env-representation.ss")
 (define primitive-procedures
   (list (list 'car car)
         (list 'cdr cdr)
@@ -14,6 +15,7 @@
         (list '+ +)
         (list '- -)
         (list '/ /)
+        (list '= =);;4.1.7
         (list 'display display)
         ;(list 'map map);;for test
         ;;....
@@ -35,7 +37,6 @@
 (define (primitive-procedure? proc)
   (tagged-list? proc 'primitive))
 (define (primitive-implementation proc) (cadr proc))
-
 
 ;;to apply a primitive procedure, we simply apply the implementation procedure 
 ;;to the arguments, using the underlying Lisp system
@@ -67,10 +68,20 @@
       (display object)))
 ;
 (define tgv the-global-environment)
+(driver-loop)
 ;(eval_ '(define (fib x) (cond ((eq? x 0) 0) ((eq? x 1) 1) (else (+ (fib (- x 1)) (fib (- x 2)))))) tgv)
-(eval_ '(cond ((eq? 0 1) 0) (else 1)) tgv)
+;(eval_ '(map car (list (cons 1 2) (cons 1 2))) tgv)
+;(eval_ '(map - (list 1 2 3 4 10)) tgv)
+;(eval_ '(map fib (list 1 2 3 4 10)) tgv)
+;(eval_ '(define (f x) (define (even? n) (if (= n 0) true (odd? (- n 1)))) (define (odd? n) (if (= n 0) false (even? (- n 1)))) (odd? x)) tgv)
+;(eval_ '(f 5) tgv)
+;(define (f x) (odd? x) (define (even? n) (if (= n 0) true (odd? (- n 1)))) (define (odd? n) (if (= n 0) false (even? (- n 1)))))
+;(f 5)
+;(eval_ '(cond ((eq? 0 1) 0) (else 1)) tgv)
 ;(eval_ '(fib 10) tgv)
 ;(eval_ '(if (eq? 0 1) 'cuole 'duile) tgv)
+;(define (xi x) (let ((a (+ x 1)) (b (+ x 2))) (+ a b) ))(xi 4)
+;(eq? (eval_ ''*unassigned* tgv) '*unassigned*);;true
 ;(driver-loop)
 ;(define tgv the-global-environment)
 ;(eval_ '(map car (list (cons 1 2))) tgv)
@@ -81,3 +92,5 @@
 ;(define xi (list 'map 'car (list (cons 1 2) (cons 2 3))))
 ;(display tgv)
 ;(primitive-procedure-names)(primitive-procedure-objects)
+;(define (3layers x) (define (2layers x) (define (floor x) x) (floor x)) (2layers x))
+;(define (2layers x) (define (floor x) x) (floor x))
