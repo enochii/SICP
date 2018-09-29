@@ -4,7 +4,7 @@
 ;;BECARE: if u define a quoted exp like the above example, then when u use
 ;;a quoted exp again, it will be evaluated! i guess... i struggled with it 
 ;;a long time...
-
+;(load "d:\\sicp\\chapter4\\4.1_\\e4.6.ss")
 (define (self-evaluating? exp)
   (cond ((number? exp) #t)
         ((string? exp) #t)
