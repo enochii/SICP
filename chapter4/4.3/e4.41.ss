@@ -1,0 +1,46 @@
+;;e4.41
+;;normal scheme slution
+(define baker-choices (list 1 2 3 4))
+(define cooper-choices (list 2 3 4 5))
+(define fletcher-choices (list 2 3 4))
+(define all (list 1 2 3 4 5))
+;;'(baker cooper fletcher miller smith)
+(define (caddddr l) (car (cddddr l)))
+(define (!= x y) (not (eq? x y)))
+(define (demand? res)
+  (let ((cooper (cadr res))
+        (fletcher (caddr res))
+        (miller (cadddr res))
+        (smith (caddddr res)))
+    (and
+     (> miller cooper)
+     (!= (abs (- smith fletcher)) 1)
+     (!= (abs (- fletcher cooper)) 1)
+     (distinct? res)
+     )))
+(load "d:\\sicp\\aux_\\filter.ss")
+(load "d:\\sicp\\aux_\\distinct.ss")
+;;nested maps make me crazy...
+(define (multiple-dwelling)
+  (map (lambda (floors)
+         (map (lambda (name flo) (cons name flo))
+              '(baker cooper fletcher miller smith)
+              floors))
+       (filter demand?
+               (gen baker-choices cooper-choices fletcher-choices all all))))
+;;gen procedure will generate all possible combinations of choices
+(load "d:\\sicp\\aux_\\flatmap.ss")
+(define (gen . choicess)
+  (define (iter choicess)
+    (if (null? (cdr choicess))
+        ;(begin (display choicess)
+        (map list (car choicess));;note
+               ;)
+        (flatmap
+         (lambda (rest-combinations)
+           (map (lambda (first-choice) (cons first-choice rest-combinations))
+                (car choicess)))
+         (iter (cdr choicess)))))
+  (iter choicess))
+;(length (gen '(a b) '(1 2 3) '(c d) '(f g)))
+(multiple-dwelling)
