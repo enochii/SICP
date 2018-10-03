@@ -1,0 +1,70 @@
+;;skip e4.43
+;;helper
+(define print-8q
+  '(define (print-8q items)
+     ;;first? -> whether is the first time that item == 0 
+     (define first? true)
+     (define (print-*-iter item)
+       (if (= item 0)
+           (if first? 
+               (begin (display "q ")
+                      (set! first? false)
+                      (print-*-iter (- 7 (car items))))
+               (newline))
+           (begin (display "* ") (print-*-iter (- item 1)))))
+     (if (null? items)
+         'print-8q
+         (begin (print-8q (cdr items))
+                (print-*-iter (car items))
+                ;(display "- ")
+                ;(print-*-iter (- 7 (car items)))
+                ))
+  ))
+;
+(define safe-position?
+  '(define (safe-pos? pos placed)
+     (let ((cur-row (length placed)))
+       ;;@para distance is the row distance of pos and first pos of placed
+       ;;we need to keep the track of it
+       (define (iter distance rest)
+         (cond ((null? rest) true)
+               ((or (= (car rest) pos)
+                    (= (+ distance 1) (abs (- (car rest) pos)))
+                    ) false)
+               (else (iter (+ distance 1) (cdr rest)))))
+       (iter 0 placed))))
+;;eight-queens
+(define 8-queens
+  '(define (8q)
+     (define (all) (amb 0 1 2 3 4 5 6 7))
+     (let ((a (amb 0 1 2 3 4 5 6 7)))
+       (let ((placed (list a)))
+         (let ((b (amb 0 1 2 3 4 5 6 7)))
+           (require (safe-pos? b placed))
+           (set! placed (cons b placed))
+           (let ((c (amb 0 1 2 3 4 5 6 7)))
+             (require (safe-pos? c placed))
+             (set! placed (cons c placed))
+             (let ((d (amb 0 1 2 3 4 5 6 7)))
+               (require (safe-pos? d placed))
+               (set! placed (cons d placed))
+               (let ((e (amb 0 1 2 3 4 5 6 7)))
+                 (require (safe-pos? e placed))
+                 (set! placed (cons e placed))
+                 (let ((f (amb 0 1 2 3 4 5 6 7)))
+                   (require (safe-pos? f placed))
+                   (set! placed (cons f placed))
+                   (let ((g (amb 0 1 2 3 4 5 6 7)))
+                     (require (safe-pos? g placed))
+                     (set! placed (cons g placed))
+                     (let ((h (amb 0 1 2 3 4 5 6 7)))
+                       (require (safe-pos? h placed))
+                       (set! placed (cons h placed))
+                       (newline)
+                       (print-8q placed)
+                       (reverse placed)
+                       )))))))))))
+;
+(pre-process safe-position?)
+(pre-process 8-queens)
+(pre-process print-8q)

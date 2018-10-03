@@ -59,6 +59,7 @@
 
 ;;eval-if
 (define (eval-if exp env)
+  ;(display "eval-if 4.1.1")
   (if (true? (eval_ (if-predicate exp) env))
       (eval_ (if-consequent exp) env)
       (eval_ (if-alternative exp) env)))

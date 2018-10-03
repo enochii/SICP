@@ -1,0 +1,8 @@
+;;4.3 finally is completed except 4.3.2 and a few exercises, i think amb is
+;;really amazing. at first, in actuality, i don't how it works though i can
+;;finish some exercise, now when i finish some homework, i think i gradually
+;;understand it a little.
+;;take analyze-sequence as example, if the previous expression is successfully
+;;evaluated, then we will make a new fail-continuation combined with the undo
+;;action with the current fail-continuation, and pass it to the next expression
+;;as its fail-continuation argument

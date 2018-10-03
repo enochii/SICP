@@ -4,7 +4,7 @@
 (define (true? x)
   (not (false? x)));;use false? to define true?
 (define (false? x)
-  (eq? x #f))
+  (or (eq? x 'false) (eq? x #f)))
 ;compound-proc
 (define (make-procedure parameters body env);;be care of 'env
   (list 'procedure parameters body env))

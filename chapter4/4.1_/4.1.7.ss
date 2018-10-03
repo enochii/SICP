@@ -1,5 +1,5 @@
 ;;4.1.7 separating syntactic analysis from execution
-;;proc analyze transfer a exp to a function, which has a local environment that has some records,
+;;proc analyze transfer a exp to a lambda, which has a local environment that has some records,
 ;;so we can just analyze once.
 ;;to tell the truth, i'm still a little confused with the mechanismm
 (load "d:\\sicp\\chapter4\\4.1_\\e4.6.ss")
@@ -7,7 +7,7 @@
   ((analyze exp) env))
 ;(load "d:\\sicp\\chapter4\\4.1_\\4.1.4.ss")
 (define (analyze exp)
-  (display "analyze ")
+  ;(display "analyze ")
   (cond ((self-evaluating? exp)
          (analyze-self-evaluating exp))
         ((quoted? exp)
@@ -58,6 +58,7 @@
       'ok)))
 ;;
 (define (analyze-if exp)
+  ;(display "analyze-if 4.17")
   (let ((pproc (analyze (if-predicate exp)))
         (cproc (analyze (if-consequent exp)))
         (aproc (analyze (if-alternative exp))))
@@ -84,7 +85,7 @@
     (if (null? procs)
         (error "Empty sequence - ANALYZE"))
     (loop (car procs) (cdr procs))))
-(load "d:\\sicp\\chapter4\\4.1_\\e4.22-23.ss")
+(load "d:\\sicp\\chapter4\\4.2_\\e4.22-23.ss")
 ;;
 (define (analyze-application exp)
   (let ((fproc (analyze (operator exp)))
