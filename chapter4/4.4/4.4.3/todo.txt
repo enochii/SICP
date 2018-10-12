@@ -1,0 +1,7 @@
+'todo
+;e4.67
+;detect the infinite loop
+;https://github.com/l0stman/sicp/blob/master/4.67.tex
+
+;e4.68
+;fix the bug after finishing 4.4.4

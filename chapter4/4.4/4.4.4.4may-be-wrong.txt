@@ -1,0 +1,12 @@
+chapter 4.4 is about logic programming, here i think the definition of
+apply-a-rule is not completed, i think we should do a query-synax-process
+to rule. at first, let we imagine a case that we have a rule
+'(rule (job-again ?x ?y)
+       (job ?x ?y))
+it will just simply send (job ?x ?y) to qeval, which will return a empty
+stream, cause when call pattern-match, with the form ?x rather than (? x),
+extend-if-consistent will never be called, which means that it will fail.
+
+in addition, u will find if we do like the book, rename-variables-in won't
+do anything actually, cause no query-syntax-process, no var, so that no
+make-new-variable
