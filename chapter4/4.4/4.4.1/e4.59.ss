@@ -1,0 +1,11 @@
+;a)
+'(meeting ?division (Friday ?time))
+;b)
+'(rule (meeting-time ?person ?day-and-time)
+       (or
+        (and (job ?person (?division . type))
+             (meeting ?division ?day-and-time))
+        (meeting whole-company ?day-and-time)))
+;c)
+'(and (meeting-time (Alyssa P.Hacker) (Wednesday ?time))
+      (meeting ?dept (wednesday ?time)))
