@@ -1,0 +1,15 @@
+((lambda (x y)
+   (* y (x x (- y 1)))
+   )
+ (lambda (x y)
+   (if (= y 0)
+       1
+       (* y (x x (- y 1)))))
+ 5)
+;
+(define (one a)
+  (lambda (b)
+    (a b)))
+(define (two a)
+  (lambda (b)
+    (a ((one a) b))))

@@ -14,11 +14,15 @@ some codes about sicp
 - 我觉得macro大概蛮有趣的，没记错的话可以改变constant identifier，而且有了这个才能用delay实现cons-stream。
 
 - scheme对全局和函数体内的名称绑定不同，详情看chapter3\sicp_3.5.4.txt。又比如你写了：
+```scheme
 (define (inside-procedure)
     (define (experiment) 'xixi)
     (define xi (experiment))
     xi
 )
+```
 当你
+```scheme
 (inside-procedure)
-会报错说(experiment)的类型是<#undefined>，虽然跟3.5.4solve的定义出现的错误很是相似，但感觉还是有细微差别。
+```
+在R5RS下会报错说(experiment)的类型是<#undefined>，虽然跟3.5.4solve的定义出现的错误很是相似，但感觉还是有细微差别。
