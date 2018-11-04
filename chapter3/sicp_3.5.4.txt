@@ -1,1 +1,9 @@
-定义solve时出问题，听从王的建议后先define了个fake dy，然后再set!回来，问题得以解决。回头一想，大概delay感觉并不是那么真实的delay，(define y (integral (delay dy) 1 0.001) 如果dy定义位于该表达式之后，y的类型就是<#undefined>，当你在这之前(define dy 'fake-dy)然后再于y的定义式之后(set! dy (stream-map f y))就没有问题，如果delay是确确实实的delay，就应该是不管delay的exp是何值都不能影响y的类型，当然这是在我看来。脚注199也提出跟scheme环境内部定义的实现有关系，大概就是王说的可能是scheme对top-level与函数体内名字绑定有区别吧。还提到了写递归的parser combinator会遇到类似问题，以后有机会会碰到吧。现在还是没有状态，会执着于找出答案，却没有去认真思考其中原因，还是要提高姿势水平啊。
+定义solve时出问题，听从王的建议后先define了个fake dy，然后再set!回来，问
+题得以解决。回头一想，大概delay感觉并不是那么真实的delay，(define y 
+(integral (delay dy) 1 0.001) 如果dy定义位于该表达式之后，y的类型就是
+<#undefined>，当你在这之前(define dy 'fake-dy)然后再于y的定义式之后(set! 
+dy (stream-map f y))就没有问题，如果delay是确确实实的delay，就应该是不管
+delay的exp是何值都不能影响y的类型，当然这是在我看来。脚注199也提出跟
+scheme环境内部定义的实现有关系，大概就是王说的可能是scheme对top-level与函
+数体内名字绑定有区别吧。还提到了写递归的parser combinator会遇到类似问题，
+以后有机会会碰到吧。还是要提高姿势水平啊...
