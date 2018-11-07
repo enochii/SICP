@@ -1,11 +1,11 @@
 ;A Machine Model
-
+(load "..//5.2.1-basic-machine.ss")
 (define (make-machine
-         register-names ops controller-txt)
+         register-names ops controller-text)
   (let ((machine (make-new-machine)))
     (for-each
      (lambda (reg-name)
-       ((machine 'allocate-register) register-name))
+       ((machine 'allocate-register) reg-name))
      register-names)
     ((machine 'install-operations) ops)
     ((machine 'install-instruction-sequence)

@@ -6,21 +6,19 @@
      (update-insts! insts labels machine)
      insts)))
 ;
-(define (extract-labels text receive)
+(define (extract-labels text recieve)
   (if (null? text)
       (recieve '() '())
-      (extract-labels
-       (cdr text)
-       (lambda (insts labels)
-         (let ((next-inst (car text)))
-           (if (symbol? next-inst)
-               (recieve insts
-                        (cons (make-label-entry next-inst
-                                                insts)
-                              labels))
-               (recieve (cons (make-instruction next-inst)
-                              insts)
-                        labels)))))))
+      (extract-labels (cdr text)
+                      (let ((inst (car text)));;this let can also be
+                        (lambda (insts labels);;moved into lambda
+                          (if (symbol? inst);;it's a label
+                              (recieve insts
+                                       (cons (make-label-entry inst insts)
+                                             labels))
+                              (recieve (cons (make-instruction inst)
+                                             insts)
+                                       labels)))))))
 ;
 (define (update-insts! insts labels machine)
   (let ((pc (get-register machine 'pc))
@@ -40,12 +38,12 @@
 (define (make-instruction text)
   (cons text '()))
 (define (instruction-text inst)
-  (car text))
-(define (instruction-excution-proc inst)
+  (car inst))
+(define (instruction-execution-proc inst)
   (cdr inst))
 (define (set-instruction-excution-proc! inst proc)
   (set-cdr! inst proc))
-;
+;here i feel amazing...
 (define (make-label-entry label-name insts)
   (cons label-name insts))
 (define (lookup-label labels label-name)

@@ -41,6 +41,7 @@
           (if (null? insts)
               'done
               (begin
+                ;(display "521BM --")(display insts)
                 ((instruction-execution-proc (car insts)))
                 (excute)))))
       ;

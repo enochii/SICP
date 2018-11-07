@@ -41,9 +41,9 @@
         (if (not (null? (left cp)))
             (begin (push cp stack) (loop (left cp)))
             (begin (display (root cp))(display " ")
-                   (if (null? (right cp))
-                       (backup)
-                       (loop (right cp)))))))
+                   ;(if (null? (right cp))
+                    ;   (backup)
+                       (loop (right cp))))));)
   (loop tree))
 ;
 (define (not-tree? x)
