@@ -11,7 +11,11 @@
          (look-prim (operation-exp-op exp) operations))
         (aprocs
          (map (lambda (operand)
-                (make-primitive-exp operand machine labels))
+                (if (label-exp? operand);;for exercise 5.9
+                    (error
+                     "Operand can not be a label! -- MAKE-OPERATION-EXP"
+                     operand)
+                    (make-primitive-exp operand machine labels)))
               (operation-exp-operands exp))))
     (lambda ()
       (apply op
